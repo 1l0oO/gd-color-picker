@@ -16,13 +16,13 @@
         "Other"
     ],
     "activationEvents": [
-        "onLanguage:gd"
+        "onLanguage:gdscript"
     ],
     "main": "./dist/extension.js",
     "contributes": {
         "languages": [
             {
-                "id": "gd",
+                "id": "gdscript",
                 "extensions": [
                     ".gd"
                 ]

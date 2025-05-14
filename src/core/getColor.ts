@@ -144,6 +144,21 @@ function getColorLabel(values: string[], color: Color): string | undefined {
             Math.round(color.alpha * 255)
         label = `Color(${num})`
     } else {
+        const isDiv255 =
+            values.length >= 3 &&
+            values.slice(0, 3).some((v) => /\/\s*255\s*$/.test(v))
+        if (isDiv255) {
+            const r = Math.round(color.red * 255)
+            const g = Math.round(color.green * 255)
+            const b = Math.round(color.blue * 255)
+            const a = Number(color.alpha.toFixed(3))
+            if (values.length === 4 || color.alpha !== 1) {
+                label = `Color(${r}.0 / 255, ${g}.0 / 255, ${b}.0 / 255, ${a})`
+            } else {
+                label = `Color(${r}.0 / 255, ${g}.0 / 255, ${b}.0 / 255)`
+            }
+            return label
+        }
         const r = Number(color.red.toFixed(3))
         const g = Number(color.green.toFixed(3))
         const b = Number(color.blue.toFixed(3))

@@ -1,9 +1,12 @@
 function strToNum(str: string): number | undefined {
-    let num: number | undefined = Number(str)
-    if (isNaN(num)) {
-        num = undefined
+    if (!/^[\d\s\.\+\-\*\/\(\)]+$/.test(str)) {
+        return undefined
     }
-    return num
+    const num = eval(str)
+    if (typeof num === "number" && !isNaN(num)) {
+        return num
+    }
+    return undefined
 }
 
 function hexToNum(hex: string): number | undefined {

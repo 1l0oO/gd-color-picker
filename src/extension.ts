@@ -24,14 +24,14 @@ export function activate(context: vscode.ExtensionContext) {
     })
 
     const openListener = vscode.workspace.onDidOpenTextDocument((document) => {
-        if (document.languageId === "gd") {
+        if (document.languageId === "gdscript") {
             if (useCache) {
                 documentLineCache.delete(document)
             }
         }
     })
     const editListener = vscode.workspace.onDidChangeTextDocument((event) => {
-        if (event.document.languageId === "gd") {
+        if (event.document.languageId === "gdscript") {
             if (useCache) {
                 updateLineCache(event.document, event.contentChanges)
             }
@@ -39,14 +39,14 @@ export function activate(context: vscode.ExtensionContext) {
     })
     const closeListener = vscode.workspace.onDidCloseTextDocument(
         (document) => {
-            if (document.languageId === "gd") {
+            if (document.languageId === "gdscript") {
                 if (useCache) {
                     documentLineCache.delete(document)
                 }
             }
         }
     )
-    const colorProvider = vscode.languages.registerColorProvider("gd", {
+    const colorProvider = vscode.languages.registerColorProvider("gdscript", {
         provideDocumentColors(document, token) {
             return provideDocumentColors(document, token, useCache)
         },
