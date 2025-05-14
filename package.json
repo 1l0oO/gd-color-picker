@@ -1,0 +1,62 @@
+{
+    "name": "vscode-gd-color-picker",
+    "displayName": "gd-color-picker",
+    "description": "color picker for gdscript",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.100.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onLanguage:gd"
+    ],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "languages": [
+            {
+                "id": "gd",
+                "extensions": [
+                    ".gd"
+                ]
+            }
+        ],
+        "configuration": {
+            "title": "GD Color Picker",
+            "properties": {
+                "gdColorPicker.useCache": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enable color cache to improve performance by about 5x, only recommended for big file."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "yarn run package",
+        "compile": "webpack",
+        "watch": "webpack --watch",
+        "package": "webpack --mode production --devtool hidden-source-map",
+        "compile-tests": "tsc -p . --outDir out",
+        "watch-tests": "tsc -p . -w --outDir out",
+        "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+        "lint": "eslint src",
+        "test": "vscode-test",
+        "run-tool": "ts-node src/tool/getColor.ts"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.100.0",
+        "@types/mocha": "^10.0.10",
+        "@types/node": "20.x",
+        "@typescript-eslint/eslint-plugin": "^8.31.1",
+        "@typescript-eslint/parser": "^8.31.1",
+        "eslint": "^9.25.1",
+        "typescript": "^5.8.3",
+        "ts-loader": "^9.5.2",
+        "webpack": "^5.99.7",
+        "webpack-cli": "^6.0.1",
+        "@vscode/test-cli": "^0.0.10",
+        "@vscode/test-electron": "^2.5.2"
+    }
+}
