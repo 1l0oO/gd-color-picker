@@ -10,6 +10,9 @@ Show color picker for GDScript(extname=`gd`) in vscode.
 
 * `gdColorPicker.useCache`: Enable color cache to improve performance by about 5x, only recommended for big file. `false` as default. When meet bugs, disable this.
 
+## License
+MIT License
+
 ## Release Notes
 
 ### 0.0.1

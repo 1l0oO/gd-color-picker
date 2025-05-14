@@ -3,8 +3,14 @@
     "displayName": "gd-color-picker",
     "description": "color picker for gdscript",
     "version": "0.0.1",
+    "publisher": "3mao",
+    "icon": "assets/logo.png",
     "engines": {
         "vscode": "^1.100.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/1l0oO/gd-color-picker"
     },
     "categories": [
         "Other"
